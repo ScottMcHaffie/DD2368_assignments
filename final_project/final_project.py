@@ -79,8 +79,6 @@ train_ds = NasaDataset(X_tr, y_tr)
 val_ds   = NasaDataset(X_val, y_val)
 test_ds  = NasaDataset(X_te, y_te)
 
-print (X_tr.shape[0], X_val.shape[0], X_te.shape[0])
-
 train_loader = DataLoader(
     train_ds,
     batch_size=8,
@@ -98,6 +96,12 @@ test_loader = DataLoader(
     batch_size=8,
     shuffle=False
 )
+print (X_tr)
+
+# sanity checks
+assert X.shape[0] == X_tr.shape[0] + X_val.shape[0] + X_te.shape[0]
+
+print (X_tr.shape[0], X_val.shape[0], X_te.shape[0])
 
 # for features, labels in train_loader:
 #     print(features.shape, labels)
